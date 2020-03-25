@@ -178,7 +178,7 @@ class SAC(OffPolicyRLModel):
                     # Target entropy is used when learning the entropy coefficient
                     if self.target_entropy == 'auto':
                         # automatically set target entropy if needed
-                        self.target_entropy = -np.prod(self.env.action_space.shape).astype(np.float32)
+                        self.target_entropy = -np.prod(self.action_space.shape).astype(np.float32)
                     else:
                         # Force conversion
                         # this will also throw an error for unexpected string
@@ -445,7 +445,7 @@ class SAC(OffPolicyRLModel):
                     tf_util.total_episode_reward_logger(self.episode_reward, ep_reward,
                                                         ep_done, writer, self.num_timesteps)
 
-                if step % self.train_freq == 0:
+                if self.num_timesteps % self.train_freq == 0:
                     callback.on_rollout_end()
 
                     mb_infos_vals = []
