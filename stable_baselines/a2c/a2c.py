@@ -44,7 +44,7 @@ class A2C(ActorCriticRLModel):
     :param max_grad_norm: (float) The maximum value for the gradient clipping
     :param learning_rate: (float) The learning rate
     :param alpha: (float)  RMSProp decay parameter (default: 0.99)
-    :param momentum: (float) RMSProp momentum parameter (default: 0.9)
+    :param momentum: (float) RMSProp momentum parameter (default: 0.0)
     :param epsilon: (float) RMSProp epsilon (stabilizes square root computation in denominator of RMSProp update)
         (default: 1e-5)
     :param lr_schedule: (str) The type of scheduler for the learning rate update ('linear', 'constant',
@@ -64,7 +64,7 @@ class A2C(ActorCriticRLModel):
     """
 
     def __init__(self, policy, env, gamma=0.99, n_steps=5, vf_coef=0.25, ent_coef=0.01, max_grad_norm=0.5,
-                 learning_rate=7e-4, alpha=0.99, momentum=0.9, epsilon=1e-5, lr_schedule='constant',
+                 learning_rate=7e-4, alpha=0.99, momentum=0.0, epsilon=1e-5, lr_schedule='constant',
                  verbose=0, tensorboard_log=None, _init_setup_model=True, policy_kwargs=None,
                  full_tensorboard_log=False, seed=None, n_cpu_tf_sess=None):
 
